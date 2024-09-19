@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator - Health Awareness</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        // JavaScript function to calculate BMI
+        function calculateBMI() {
+            // Get weight and height input values
+            var weight = document.getElementById('weight').value;
+            var height = document.getElementById('height').value;
+
+            // Check if weight and height are greater than 0
+            if (weight > 0 && height > 0) {
+                // Convert height from cm to meters
+                height = height / 100;
+                
+                // Calculate BMI
+                var bmi = weight / (height * height);
+                
+                // Display the BMI result in the "bmiResult" element
+                document.getElementById('bmiResult').textContent = "Your BMI is " + bmi.toFixed(2);
+                
+                // Determine the BMI category using if-else statements and display the result
+                if (bmi < 18.5) {
+                    document.getElementById('bmiCategory').textContent = "You are underweight.";
+                } else if (bmi >= 18.5 && bmi <= 24.9) {
+                    document.getElementById('bmiCategory').textContent = "You have a normal weight.";
+                } else if (bmi >= 25 && bmi <= 29.9) {
+                    document.getElementById('bmiCategory').textContent = "You are overweight.";
+                } else {
+                    document.getElementById('bmiCategory').textContent = "You are obese.";
+                }
+            } else {
+                // Show an alert if input values are invalid
+                alert("Please enter valid weight and height values.");
+            }
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>BMI Calculator</h1>
+        <p>Calculate your Body Mass Index (BMI) to understand your health status.</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="Health Info Page.html">Health Info</a></li>
+            <li><a href="BMI calculator.html">BMI Calculator</a></li>
+        </ul>
+    </nav>
+
+    <section>
+        <h2>What is BMI?</h2>
+        <p>BMI is a measurement that helps determine whether you have a healthy body weight for a person of your height.</p>
+
+        <h2>Calculate Your BMI</h2>
+        <form id="bmiForm">
+            <label for="weight">Weight (kg):</label>
+            <input type="number" id="weight" name="weight" required>
+
+            <label for="height">Height (cm):</label>
+            <input type="number" id="height" name="height" required>
+
+            <button type="button" onclick="calculateBMI()">Calculate</button>
+        </form>
+
+        <!-- These elements will display the BMI result and category -->
+        <p id="bmiResult"></p>
+        <p id="bmiCategory"></p>
+    </section>
+
+    <footer>
+        <p>© 2024 Health Awareness</p>
+    </footer>
+</body>
+</html>
